@@ -2,7 +2,6 @@
 #include "lbfgs.h"
 #include <vector>
 #include <iostream>
-#include <minmax.h>
 #include "fstream"
 #include "string"
 #include <CGAL/Simple_cartesian.h>
