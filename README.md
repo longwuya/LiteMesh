@@ -1,43 +1,61 @@
-# LiteMesh: An Efficient Quality-Aware Algorithm for Feature-Preserving Triangle Mesh Simplification
+# LiteMesh
 
-homepage of LiteMesh: [link]
+**LiteMesh: An Efficient Quality-Aware Algorithm for Feature-Preserving Triangle Mesh Simplification**
 
-paper link of LiteMesh: [link]
+LiteMesh 面向保留几何特征的三角网格简化，综合考虑几何保真度、三角形质量与计算效率。
 
-## Dependency
-- CGAL
-- Eigen3
-- C++ 17
-- vcpkg
-- CMake
- 
-## Build
-We use vcpkg to install dependencies and use CMake to build the project. Please make sure they are installed on your computer.
-```
-git clone https://github.com/ochenglino/LiteMesh.git && cd LiteMesh
+## 项目地址
 
-# install dependencies by vcpkg
-$<VCPKG_ROOT>\vcpkg.exe install --triplet x64-windows
+- 项目主页：https://longwuya.github.io/LiteMesh-homepage/
+- 代码仓库：https://github.com/longwuya/LiteMesh
+- 原始代码仓库：https://github.com/ochenglino/LiteMesh
 
-# configuration
-cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE="$<VCPKG_ROOT>\scripts\buildsystems\vcpkg.cmake" -A x64
+本仓库基于原始代码仓库迁移，保留原有代码及提交历史。
 
-# compilation
+## 环境与依赖
+
+- Windows x64 与支持 C++17 的编译器。
+- CMake 3.20 或更新版本。
+- vcpkg。
+- CGAL、Eigen3、OpenMP。
+
+仓库内包含 ANN、L-BFGS 和 PQP 等相关组件。当前构建配置使用 Windows 版 ANN 预编译库。
+
+## 编译
+
+以下命令在 PowerShell 中执行。请先安装 CMake、vcpkg 和 Visual Studio C++ 构建工具，并将 `VCPKG_ROOT` 环境变量设置为 vcpkg 所在目录。
+
+```powershell
+git clone https://github.com/longwuya/LiteMesh.git
+cd LiteMesh
+
+& "$env:VCPKG_ROOT\vcpkg.exe" install --triplet x64-windows
+
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake" -A x64
 cmake --build build --config Release
 ```
-The output LiteMesh.exe will be in the folder ``` /build/src/Release```
 
-## Run 
-After the project is successfully built, you can easily use it from the command line, as follows:
-```
+当前 CMake 目标名称为 `LiteCAD`，生成的可执行文件位于 `build/src/Release/LiteCAD.exe`。
+
+## 运行
+
+```text
 LiteCAD.exe <INPUT> <OUTPUT> <SIZE> <FACTOR_OF_DECAY> <FACTOR_FOR_PARTICLE_SYSTEM>
-# example: LiteMesh.exe ../../../data/bunny.obj ../../../data 1000 0.95 0.3 
-```
-It is worth noting that we recommend setting the decay factor and particle system factor to 0.95 and 0.3 respectively if you want to achieve the desired mesh simplification effect.
-
-## Citation
-If this code contributes to academic work, please cite as:
 ```
 
+| 参数 | 含义 |
+| --- | --- |
+| `INPUT` | 输入网格文件路径。 |
+| `OUTPUT` | 输出目录。 |
+| `SIZE` | 目标采样点数量。 |
+| `FACTOR_OF_DECAY` | 粒子系统能量衰减因子，原始说明推荐值为 `0.95`。 |
+| `FACTOR_FOR_PARTICLE_SYSTEM` | 粒子系统相关系数，原始说明推荐值为 `0.3`。 |
+
+在仓库根目录运行示例：
+
+```powershell
+New-Item -ItemType Directory -Path output -Force
+.\build\src\Release\LiteCAD.exe .\data\bunny.obj .\output 1000 0.95 0.3
 ```
 
+示例输入网格位于 `data/` 目录。编译产物、依赖安装目录和本地实验输出不作为本次迁移内容。
