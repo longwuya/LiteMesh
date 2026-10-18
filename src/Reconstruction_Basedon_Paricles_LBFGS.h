@@ -1,4 +1,13 @@
 #pragma once
+
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
+#ifdef min
+#undef min
+#endif
+
 #include <omp.h>
 #include "Non_Linear_Optimization.h"
 #include "Reconstruction_Parameters.h"
@@ -13,6 +22,11 @@
 #include <CGAL/Delaunay_triangulation_3.h>
 #include <CGAL/Triangulation_3.h>
 #include "Distance_OBB.h"
+
+#ifdef min
+#undef min
+#endif
+
 #include <Eigen/Sparse>
 #include <Eigen/LU>
 
