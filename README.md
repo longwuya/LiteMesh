@@ -8,9 +8,6 @@ LiteMesh 面向保留几何特征的三角网格简化，综合考虑几何保�
 
 - 项目主页：https://longwuya.github.io/LiteMesh-homepage/
 - 代码仓库：https://github.com/longwuya/LiteMesh
-- 原始代码仓库：https://github.com/ochenglino/LiteMesh
-
-本仓库基于原始代码仓库迁移，保留原有代码及提交历史。
 
 ## 环境与依赖
 
@@ -48,8 +45,8 @@ LiteCAD.exe <INPUT> <OUTPUT> <SIZE> <FACTOR_OF_DECAY> <FACTOR_FOR_PARTICLE_SYSTE
 | `INPUT` | 输入网格文件路径。 |
 | `OUTPUT` | 输出目录。 |
 | `SIZE` | 目标采样点数量。 |
-| `FACTOR_OF_DECAY` | 粒子系统能量衰减因子，原始说明推荐值为 `0.95`。 |
-| `FACTOR_FOR_PARTICLE_SYSTEM` | 粒子系统相关系数，原始说明推荐值为 `0.3`。 |
+| `FACTOR_OF_DECAY` | 粒子系统能量衰减因子，推荐值为 `0.95`。 |
+| `FACTOR_FOR_PARTICLE_SYSTEM` | 粒子系统相关系数，推荐值为 `0.3`。 |
 
 在仓库根目录运行示例：
 
@@ -58,4 +55,4 @@ New-Item -ItemType Directory -Path output -Force
 .\build\src\Release\LiteCAD.exe .\data\bunny.obj .\output 1000 0.95 0.3
 ```
 
-示例输入网格位于 `data/` 目录。编译产物、依赖安装目录和本地实验输出不作为本次迁移内容。
+示例输入网格位于 `data/` 目录，运行结果保存至指定的输出目录。
