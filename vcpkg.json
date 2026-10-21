@@ -2,12 +2,12 @@
   "name": "litemesh",
   "version": "1.0.0",
   "description": "3D Triangle Mesh Simplification/Reconstruction",
+  "builtin-baseline": "e456309491fd875487bf02b8a0dca76c1b1b00cc",
   "dependencies": [
     {
       "name": "cgal",
       "default-features": false
     },
     "eigen3"
-  ],
-  "builtin-baseline": "e456309491fd875487bf02b8a0dca76c1b1b00cc"
+  ]
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+// Prevent Windows min/max macros from interfering with numerical libraries.
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
@@ -23,6 +24,7 @@
 #include <CGAL/Triangulation_3.h>
 #include "Distance_OBB.h"
 
+// Third-party headers may reintroduce min before Eigen is included.
 #ifdef min
 #undef min
 #endif

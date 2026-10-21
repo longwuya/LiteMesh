@@ -1,4 +1,5 @@
 #pragma once
+// Use standard-library algorithms without the legacy min/max macro header.
 #include "lbfgs.h"
 #include <vector>
 #include <iostream>
